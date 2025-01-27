@@ -1,0 +1,35 @@
+package com.musicstore.dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.musicstore.model.Feedback;
+import com.musicstore.util.DBUtil;
+
+public class FeedbackDAO {
+
+    // Method to get all feedback from the database
+    public List<Feedback> getAllFeedback() {
+        List<Feedback> feedbackList = new ArrayList<>();
+        String sql = "SELECT * FROM feedback";
+        try (Connection conn = DBUtil.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql);
+             ResultSet rs = ps.executeQuery()) {
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                String name = rs.getString("name");
+                String email = rs.getString("email");
+                String comment = rs.getString("comment");
+                Feedback feedback = new Feedback(id, name, email, comment);
+                feedbackList.add(feedback);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return feedbackList;
+    }
+}

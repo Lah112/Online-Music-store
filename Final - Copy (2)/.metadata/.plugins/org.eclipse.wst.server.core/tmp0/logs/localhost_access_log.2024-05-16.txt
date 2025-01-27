@@ -1,0 +1,14 @@
+0:0:0:0:0:0:0:1 - - [16/May/2024:08:52:50 +0530] "GET /MusicStoreFeedback/feedback.jsp HTTP/1.1" 200 12006
+0:0:0:0:0:0:0:1 - - [16/May/2024:08:52:50 +0530] "GET /MusicStoreFeedback/logo.png HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [16/May/2024:08:52:50 +0530] "GET /MusicStoreFeedback/person.png HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [16/May/2024:08:52:50 +0530] "GET /MusicStoreFeedback/background.jpg HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [16/May/2024:08:52:50 +0530] "GET /favicon.ico HTTP/1.1" 404 762
+0:0:0:0:0:0:0:1 - - [16/May/2024:08:52:58 +0530] "POST /MusicStoreFeedback/submitFeedback?action=create HTTP/1.1" 302 -
+0:0:0:0:0:0:0:1 - - [16/May/2024:08:52:58 +0530] "GET /MusicStoreFeedback/submitFeedback?action=read HTTP/1.1" 200 12777
+0:0:0:0:0:0:0:1 - - [16/May/2024:08:53:04 +0530] "POST /MusicStoreFeedback/submitFeedback?action=update HTTP/1.1" 302 -
+0:0:0:0:0:0:0:1 - - [16/May/2024:08:53:04 +0530] "GET /MusicStoreFeedback/submitFeedback?action=read HTTP/1.1" 200 12779
+0:0:0:0:0:0:0:1 - - [16/May/2024:08:53:06 +0530] "POST /MusicStoreFeedback/submitFeedback HTTP/1.1" 302 -
+0:0:0:0:0:0:0:1 - - [16/May/2024:08:53:06 +0530] "GET /MusicStoreFeedback/submitFeedback?action=read HTTP/1.1" 200 12006
+0:0:0:0:0:0:0:1 - - [16/May/2024:08:56:33 +0530] "GET /MusicStoreFeedback/feedback.jsp HTTP/1.1" 200 12006
+127.0.0.1 - - [16/May/2024:10:37:28 +0530] "GET / HTTP/1.1" 404 751
+0:0:0:0:0:0:0:1 - - [16/May/2024:10:37:29 +0530] "GET /MusicStoreFeedback/feedback.jsp HTTP/1.1" 200 12006

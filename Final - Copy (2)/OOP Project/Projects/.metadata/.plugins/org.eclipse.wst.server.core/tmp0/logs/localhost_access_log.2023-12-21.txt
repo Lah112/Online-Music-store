@@ -1,0 +1,8 @@
+127.0.0.1 - - [21/Dec/2023:10:16:05 +0530] "GET / HTTP/1.1" 404 751
+0:0:0:0:0:0:0:1 - - [21/Dec/2023:10:16:06 +0530] "GET /CustomerDemo/useraccount.jsp HTTP/1.1" 200 773
+0:0:0:0:0:0:0:1 - - [21/Dec/2023:10:16:06 +0530] "GET /favicon.ico HTTP/1.1" 404 762
+0:0:0:0:0:0:0:1 - - [21/Dec/2023:10:16:08 +0530] "GET /CustomerDemo/updatecustomer.jsp;jsessionid=D38692EF0931F6BA92527FC8435E6F94?id=&name=&email=&phone=&uname=&pass= HTTP/1.1" 200 989
+0:0:0:0:0:0:0:1 - - [21/Dec/2023:13:46:43 +0530] "GET /PaymentBilling/getgeninfoname.jsp HTTP/1.1" 500 2483
+0:0:0:0:0:0:0:1 - - [21/Dec/2023:13:46:43 +0530] "GET /favicon.ico HTTP/1.1" 404 762
+0:0:0:0:0:0:0:1 - - [21/Dec/2023:13:54:58 +0530] "GET /PaymentBilling/findname.jsp HTTP/1.1" 500 2459
+0:0:0:0:0:0:0:1 - - [21/Dec/2023:13:54:58 +0530] "GET /favicon.ico HTTP/1.1" 404 762

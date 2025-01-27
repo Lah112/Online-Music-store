@@ -1,0 +1,5 @@
+package com.musicstore.util;
+
+public class DBUtil {
+
+}

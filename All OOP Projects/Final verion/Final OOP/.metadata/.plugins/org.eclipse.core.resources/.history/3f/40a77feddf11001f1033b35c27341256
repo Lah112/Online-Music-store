@@ -1,0 +1,391 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="java.util.List" %>
+<%@ page import="com.musicstore.model.Feedback" %>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Store Feedback</title>
+    <style>
+        /* Reset CSS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+       
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('background.jpg'); 
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh; 
+            position: relative; 
+        }
+
+        
+        .person-section {
+            position: absolute;
+            left: -300px; 
+            top: 80%;
+            transform: translateY(-50%);
+            text-align: center;
+        }
+
+        .person-section img {
+            width: 200px; 
+            height: auto; 
+            margin-bottom: 10px; 
+        }
+
+        .person-section p {
+            font-size: 16px; 
+            color: #541550; 
+            font-style: italic;
+        }
+
+       
+        .navbar {
+            background-color: rgba(0, 51, 102, 0.8); 
+            color: #FFF; /
+            padding: 10px 0; 
+            text-align: center;
+            border-radius: 0 0 10px 10px; 
+            position: relative; 
+        }
+
+    
+        .navbar a {
+            color: #FFF; 
+            text-decoration: none;
+            margin: 0 20px; 
+            font-size: 18px; 
+            transition: color 0.3s; 
+        }
+
+        
+        .navbar a:hover {
+            color: #FFC300; 
+        }
+
+        
+        .logo {
+            width: 80px; 
+            height: 40px;
+            position: absolute;
+            top: 50%;
+            left: 20px;
+            transform: translateY(-50%); 
+        }
+
+        
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            position: relative; 
+        }
+
+        
+        .submit-feedback-box {
+            padding: 30px;
+            background-color: rgba(255, 255, 255, 0.9); 
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            margin-bottom: 30px;
+        }
+
+   
+        .existing-feedback-box {
+            padding: 30px;
+            background-color: rgba(255, 255, 255, 0.9); 
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        }
+
+      
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+     
+        form {
+            text-align: center;
+        }
+
+        
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        
+        input[type="text"],
+        input[type="email"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: none;
+            border-radius: 5px;
+            box-sizing: border-box;
+            background-color: rgba(255, 255, 255, 0.8);
+            border: 1px solid rgba(0, 0, 0, 0.2);
+            transition: border-color 0.3s;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #007bff;
+        }
+
+       
+        button[type="submit"] {
+            background-color: #007bff;
+            color: white;
+            padding: 14px 20px;
+            margin-top: 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            color: #333;
+        }
+
+        
+        .btn-container {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        
+        .btn-container button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 10px 15px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .btn-container button:hover {
+            background-color: #0056b3;
+        }
+
+        
+        .footer {
+            background-color: rgba(0, 51, 102, 0.8); 
+            color: #FFF; 
+            text-align: center;
+            padding: 10px 0; 
+            border-radius: 0 0 10px 10px; 
+            position: absolute; 
+            bottom: 0; 
+            width: 100%; 
+        }
+        
+.btn-container button[type="button"] {
+    background-color: #007bff; 
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px; /
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-right: 10px; 
+   
+    
+}
+
+
+.btn-container form button[type="submit"] {
+    background-color: #dc3545; /* Red color */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px; /
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-rights: 10px; 
+    
+}
+
+
+   
+    .btn-container button[type="button"]:hover {
+        background-color: #0056b3; 
+    }
+
+    .btn-container form button[type="submit"]:hover {
+        background-color: #c82333; /
+    }
+    
+
+    </style>
+    <script>
+        // JavaScript function to show popup message
+        function showPopup(message) {
+            alert(message);
+        }
+
+        // JavaScript function to show the edit form
+        function showEditForm(id, name, email, comment) {
+            document.getElementById('edit-feedback-id').value = id;
+            document.getElementById('edit-name').value = name;
+            document.getElementById('edit-email').value = email;
+            document.getElementById('edit-comment').value = comment;
+            document.getElementById('edit-feedback-box').style.display = 'block';
+        }
+
+        // JavaScript function to hide the edit form
+        function hideEditForm() {
+            document.getElementById('edit-feedback-box').style.display = 'none';
+        }
+    </script>
+</head>
+<body>
+    <div class="navbar">
+        <img src="logo.png" alt="Logo" class="logo">
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+    </div>
+    <div class="container">
+        <!-- Person Image and Text Section -->
+        <div class="person-section">
+            <img src="person.png" alt="Person Image">
+            <p><b>"This is amazing!"<br>Lahiru Chamara<br>~CEO WinTech~</b></p>
+        </div>
+        <!-- Submit New Feedback Section -->
+        <div class="submit-feedback-box">
+            <h1 class="mt-5 mb-4">Submit New Feedback</h1>
+            <form action="submitFeedback?action=create" method="post" onsubmit="showPopup('Feedback has submitted successfully!')">
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="comment">Comment:</label>
+                    <textarea id="comment" name="comment" rows="4" required></textarea>
+                </div>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+
+        <!-- Edit Feedback Box -->
+        <div id="edit-feedback-box" class="submit-feedback-box" style="display: none;">
+            <h1>Edit Feedback</h1>
+            <form action="submitFeedback?action=update" method="post" onsubmit="showPopup('Feedback has updated successfully!')">
+                <input type="hidden" id="edit-feedback-id" name="id">
+                <div class="form-group">
+                    <label for="edit-name">Name:</label>
+                    <input type="text" id="edit-name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="edit-email">Email:</label>
+                    <input type="email" id="edit-email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="edit-comment">Comment:</label>
+                    <textarea id="edit-comment" name="comment" rows="4" required></textarea>
+                </div>
+                <button type="submit">Update</button>
+                <button type="button" onclick="hideEditForm()">Cancel</button>
+                
+            </form>
+        </div>
+
+        <!-- Existing Feedback Section -->
+        <div class="existing-feedback-box">
+            <h1 class="mt-5 mb-4">Existing Feedback</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Comment</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <%
+                        // Get feedbackList from request attribute
+                        List<Feedback> feedbackList = (List<Feedback>) request.getAttribute("feedbackList");
+                        
+                        // Check if feedbackList is not null and not empty
+                        if (feedbackList != null && !feedbackList.isEmpty()) {
+                            // Iterate through the feedbackList
+                            for (Feedback feedback : feedbackList) {
+                    %>
+                    <tr>
+                        <td><%= feedback.getId() %></td>
+                        <td><%= feedback.getName() %></td>
+                        <td><%= feedback.getEmail() %></td>
+                        <td><%= feedback.getComment() %></td>
+                        <td>
+                            <div class="btn-container">
+                                <button type="button" onclick="showEditForm('<%= feedback.getId() %>', '<%= feedback.getName() %>', '<%= feedback.getEmail() %>', '<%= feedback.getComment() %>')">Edit</button>
+                                <form action="submitFeedback" method="post">
+                                    <input type="hidden" name="action" value="delete">
+                                    <input type="hidden" name="id" value="<%= feedback.getId() %>">
+                                    <button type="submit">Delete</button>
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+                    <%
+                            } 
+                        } else { 
+                    %>
+                    <tr>
+                        <td colspan="5">No feedback available</td>
+                    </tr>
+                    <%
+                        } 
+                    %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="footer">
+        &copy; 2024 "තනුව" Music Store. All rights reserved.
+    </div>
+</body>
+</html>
